@@ -42,12 +42,12 @@ service.interceptors.response.use(response => {
     })
   } else if (error.response.status === 403) {
     Message({
-      message: '权限拒绝',
+      message: '权限拒绝,如有需要请联系管理员',
       type: 'error',
-      duration: 1500,
-      onClose: function() {
-        router.push({ path: '/dashboard' })
-      }
+      duration: 1500
+      // onClose: function() {
+      //   router.push({ path: '/' })
+      // }
     })
   } else if (error.response.status === 400) {
     console.log(111)

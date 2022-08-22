@@ -41,7 +41,7 @@
           </el-table-column>
           <el-table-column
                   prop="is_active"
-                  label="登录状态"
+                  label="是否允许登录"
                   align="center"
                   width="78">
               <template slot-scope="scope">
@@ -209,7 +209,7 @@ export default {
     this.fetchData()
     // 获取所有角色列表
     getGroupsList({ page_size: 0 }).then(res => {
-      this.rolesList = res
+      this.rolesList = res.results
     })
   },
   methods: {
@@ -326,9 +326,14 @@ export default {
     checkRoleClick(row) {
       this.roleTags = []
       getUserGroupsList(row.id, { page_size: 0 }).then(res => {
-        this.roleTags = res
+        this.roleTags = res.results
         if (this.roleTags.length > 0) {
           this.checkRoleVisible = true
+        } else {
+          this.$message({
+            message: '当前用户无角色',
+            type: 'warning'
+          })
         }
       })
     }

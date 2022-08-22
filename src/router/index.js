@@ -50,6 +50,9 @@ const IpList = () => import('@/views/resource/IpList')
 /* 监控管理 */
 const Zabbix = () => import('@/views/monitor/zabbix')
 
+/* 配置管理 */
+const Configure = () => import('@/views/configure/configure')
+
 export const constantRouterMap = [
   {
     path: '/login',
@@ -98,8 +101,8 @@ export const constantRouterMap = [
         path: 'group/groupPermission',
         component: GroupPermissionList,
         name: '权限列表',
-        meta: { title: '权限列表', icon: 'user' },
-        hidden: true
+        meta: { title: '权限列表', icon: 'user' }
+        // hidden: true
       }
     ]
   },
@@ -177,6 +180,23 @@ export const constantRouterMap = [
         component: Zabbix,
         name: 'zabbix',
         meta: { title: 'zabbix', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/configure',
+    component: Layout,
+    name: '配置管理',
+    meta: {
+      title: '配置管理',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'configure',
+        component: Configure,
+        name: 'configure',
+        meta: { title: 'configure', icon: 'user' }
       }
     ]
   },
