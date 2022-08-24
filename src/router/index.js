@@ -51,7 +51,10 @@ const IpList = () => import('@/views/resource/IpList')
 const Zabbix = () => import('@/views/monitor/zabbix')
 
 /* 配置管理 */
-const Configure = () => import('@/views/configure/configure')
+const keyConfigureList = () => import('@/views/configure/configure')
+
+/* 阿里云instance */
+const AliyunInstanceList = () => import('@/views/cmdb/aliyun_instance')
 
 export const constantRouterMap = [
   {
@@ -186,6 +189,7 @@ export const constantRouterMap = [
   {
     path: '/configure',
     component: Layout,
+    redirect: '/configure/keyconfigure',
     name: '配置管理',
     meta: {
       title: '配置管理',
@@ -193,10 +197,28 @@ export const constantRouterMap = [
     },
     children: [
       {
-        path: 'configure',
-        component: Configure,
-        name: 'configure',
-        meta: { title: 'configure', icon: 'user' }
+        path: 'keyconfigure',
+        component: keyConfigureList,
+        name: 'keyconfigure',
+        meta: { title: 'keyconfigure', icon: 'user' }
+      }
+    ]
+  },
+  {
+    path: '/cmdb',
+    component: Layout,
+    redirect: '/cmdb/aliyuninstance',
+    name: 'cmdb',
+    meta: {
+      title: 'cmdb',
+      icon: 'user'
+    },
+    children: [
+      {
+        path: 'aliyuninstance',
+        component: AliyunInstanceList,
+        name: '阿里云实例',
+        meta: { title: '阿里云实例', icon: 'user' }
       }
     ]
   },
